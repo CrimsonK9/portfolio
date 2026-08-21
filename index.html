@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>James Kurian — product &amp; design systems designer</title>
+<meta name="description" content="James Kurian is a product designer and design system manager at IBM, working on banking experiences for TSB and Nationwide. Systems thinker, problem solver, designer.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#181818">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23181818'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23cf44ff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400..800&amp;display=swap">
+<script>
+  /* Theme, chosen before first paint.
+
+     Inline and blocking on purpose. Deferring this to script.js means
+     the browser paints the default theme, then repaints — a white flash
+     on every navigation for someone who picked dark. Six pages of static
+     HTML share no shell to hoist it into, so it is duplicated knowingly.
+
+     try/catch because localStorage *throws* rather than returning null
+     when a browser is set to block storage; an exception here would
+     leave the page unstyled-looking and stop the rest of <head>. */
+  (function () {
+    var pick = 'dark';
+    try {
+      var saved = localStorage.getItem('jk.theme');
+      pick = (saved === 'light' || saved === 'dark') ? saved
+        : window.matchMedia('(prefers-color-scheme: light)').matches
+          ? 'light' : 'dark';
+    } catch (e) {}
+    document.documentElement.setAttribute('data-theme', pick);
+  })();
+</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead" data-masthead>
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="index.html">
+      <span class="wordmark__dot" aria-hidden="true"></span>
+      James Kurian
+    </a>
+    <div class="masthead__end">
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="work.html">Case studies</a>
+        <a href="about.html">About</a>
+        <a href="mailto:jamu.kurian@gmail.com">Email</a>
+      </nav>
+      <button class="themer" type="button" role="switch" aria-checked="false"
+              aria-label="Light mode" data-themer>
+        <span class="themer__knob" aria-hidden="true"></span>
+        <svg class="themer__icon themer__icon--moon" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+             stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M20.2 14.6A8.6 8.6 0 0 1 9.4 3.8a8.6 8.6 0 1 0 10.8 10.8Z"/>
+        </svg>
+        <svg class="themer__icon themer__icon--sun" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+             stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="4.1"/>
+          <path d="M12 2.7v2.1M12 19.2v2.1M2.7 12h2.1M19.2 12h2.1M5.4 5.4l1.5 1.5M17.1 17.1l1.5 1.5M18.6 5.4l-1.5 1.5M6.9 17.1l-1.5 1.5"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- == Hero ==============================================
+
+       The greeting used to be set at --t-hero, the same size as the
+       headline directly beneath it, so two 5.6rem lines competed and
+       neither won. It is the kicker now: same words, a tenth of the
+       size, which is what lets the headline actually land.
+
+       The glow layer is decorative and pointer-driven; script.js only
+       animates it for a fine pointer with motion allowed, and it sits at
+       z-index -1 behind everything in the section. It is a fixed-position
+       viewport layer rather than a box inside this section, which is what
+       lets it track the cursor exactly — see styles.css for why the earlier
+       absolutely-positioned version could not.                    -->
+  <section class="shell hero hero--home" data-pointer-field>
+    <span class="glow" data-glow aria-hidden="true"></span>
+
+    <div class="hero__grid">
+      <div class="hero__say">
+        <p class="kicker">
+          <span class="kicker__dot" aria-hidden="true"></span>
+          Hi, I&rsquo;m James Kurian &mdash; designer at IBM, in India
+        </p>
+
+        <h1 class="hero__line hero__line--staged">
+          <span class="hero__stagger">Systems thinker.</span>
+          <span class="hero__stagger">Problem solver.</span>
+          <span class="hero__stagger">Designer.</span>
+        </h1>
+
+        <p class="lead hero__lead">
+          I&rsquo;m nine years into this, and about five of those have been
+          spent inside banks &mdash; which is where I learned that the
+          interesting problem is almost never the one on the screen in front of
+          you. I built and ran the design system behind TSB&rsquo;s mobile app;
+          these days I&rsquo;m redesigning internet banking at Nationwide. The
+          work I like best sits in the gap between design and engineering,
+          where the honest answer turns out to be a system rather than a
+          screen.
+        </p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="work.html">
+            See the case studies
+            <svg class="btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="about.html">More about me</a>
+        </div>
+      </div>
+
+      <!-- The photographs used to sit in a row beneath the tally, where the
+           right half of the hero was empty and they were small enough to
+           read as decoration. Up here they are half again as wide and piled
+           vertically — a stack needs one circle's width instead of three, so
+           the prints get bigger and the headline beside them still gets a
+           column wide enough to hold "Systems thinker." on one line. -->
+      <div class="hero__show">
+        <div class="faces faces--tall">
+          <span class="faces__item"><img src="assets/photo-portrait.jpg" alt="James Kurian" width="880" height="880"></span>
+          <span class="faces__item"><img src="assets/photo-team.jpg" alt="James with his design team" width="760" height="760" loading="lazy"></span>
+          <span class="faces__item"><img src="assets/photo-cat.jpg" alt="James&rsquo;s cat" width="640" height="640" loading="lazy"></span>
+          <p class="faces__note">Designer, occasional team photographer, full-time staff to one cat.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Experience, not achievements: how long, how much of it in banking,
+         and which industries the rest was spent in. The two numbers agree
+         with the timeline on the About page — 2021-2024 at TSB plus
+         2024-now at Nationwide is where "05+ in banking" comes from — so
+         neither is a new claim this page has to defend on its own. -->
+    <dl class="tally">
+      <div class="tally__cell">
+        <dt class="tally__label">Years designing</dt>
+        <dd class="tally__value">09</dd>
+      </div>
+      <div class="tally__cell">
+        <dt class="tally__label">Of those in banking</dt>
+        <dd class="tally__value">05+</dd>
+      </div>
+      <div class="tally__cell tally__cell--wide">
+        <dt class="tally__label">Industries</dt>
+        <dd class="tally__list">
+          Banking &middot; Retail &middot; Energy distribution &middot;
+          Consumer electronics
+        </dd>
+      </div>
+    </dl>
+  </section>
+
+  <!-- == What I do ========================================= -->
+  <section class="shell band" data-reveal>
+    <h2 class="eyebrow">What I actually do</h2>
+    <div class="skills">
+      <div class="skills__group">
+        <h3>Design systems</h3>
+        <ul>
+          <li>Component architecture and API design</li>
+          <li>Token systems and theming</li>
+          <li>Governance, contribution and versioning</li>
+          <li>Documentation designers will read</li>
+          <li>Migration off legacy libraries</li>
+        </ul>
+      </div>
+      <div class="skills__group">
+        <h3>Product design</h3>
+        <ul>
+          <li>End-to-end journeys, discovery to launch</li>
+          <li>Prototyping and usability testing</li>
+          <li>Competitor and heuristic analysis</li>
+          <li>Working inside regulated constraints</li>
+          <li>Accessibility to WCAG 2.2 AA</li>
+        </ul>
+      </div>
+      <div class="skills__group">
+        <h3>How I work with teams</h3>
+        <ul>
+          <li>Pairing directly with engineers</li>
+          <li>Turning research into decisions</li>
+          <li>Design QA against the build</li>
+          <li>Mentoring and design critique</li>
+          <li>Making the case to stakeholders</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- == Clients =========================================== -->
+  <section class="shell band" data-reveal>
+    <h2 class="eyebrow">Brands I&rsquo;ve designed for</h2>
+    <div class="logos bleed">
+      <div class="logos__track">
+        <div class="logos__set">
+          <span class="logos__item"><img src="assets/logo-safeway.png" alt="Safeway" width="751" height="148" loading="lazy"></span>
+          <span class="logos__item"><img src="assets/logo-majid.png" alt="Majid Al Futtaim" width="734" height="142" loading="lazy"></span>
+          <span class="logos__item"><img src="assets/logo-crompton.png" alt="Crompton" width="437" height="91" loading="lazy"></span>
+          <span class="logos__item"><img src="assets/logo-fluvius.png" alt="Fluvius" width="401" height="142" loading="lazy"></span>
+          <span class="logos__item"><img src="assets/logo-bp.png" alt="BP" width="185" height="243" loading="lazy"></span>
+          <span class="logos__item"><img src="assets/logo-tsb.png" alt="TSB Bank" width="402" height="156" loading="lazy"></span>
+          <span class="logos__item"><img src="assets/logo-nationwide.png" alt="Nationwide Building Society" width="556" height="84" loading="lazy"></span>
+        </div>
+        <div class="logos__set" aria-hidden="true">
+          <span class="logos__item"><img src="assets/logo-safeway.png" alt="" width="751" height="148" loading="lazy"></span>
+          <span class="logos__item"><img src="assets/logo-majid.png" alt="" width="734" height="142" loading="lazy"></span>
+          <span class="logos__item"><img src="assets/logo-crompton.png" alt="" width="437" height="91" loading="lazy"></span>
+          <span class="logos__item"><img src="assets/logo-fluvius.png" alt="" width="401" height="142" loading="lazy"></span>
+          <span class="logos__item"><img src="assets/logo-bp.png" alt="" width="185" height="243" loading="lazy"></span>
+          <span class="logos__item"><img src="assets/logo-tsb.png" alt="" width="402" height="156" loading="lazy"></span>
+          <span class="logos__item"><img src="assets/logo-nationwide.png" alt="" width="556" height="84" loading="lazy"></span>
+        </div>
+        <div class="logos__set" aria-hidden="true">
+          <span class="logos__item"><img src="assets/logo-safeway.png" alt="" width="751" height="148" loading="lazy"></span>
+          <span class="logos__item"><img src="assets/logo-majid.png" alt="" width="734" height="142" loading="lazy"></span>
+          <span class="logos__item"><img src="assets/logo-crompton.png" alt="" width="437" height="91" loading="lazy"></span>
+          <span class="logos__item"><img src="assets/logo-fluvius.png" alt="" width="401" height="142" loading="lazy"></span>
+          <span class="logos__item"><img src="assets/logo-bp.png" alt="" width="185" height="243" loading="lazy"></span>
+          <span class="logos__item"><img src="assets/logo-tsb.png" alt="" width="402" height="156" loading="lazy"></span>
+          <span class="logos__item"><img src="assets/logo-nationwide.png" alt="" width="556" height="84" loading="lazy"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- == Case studies ====================================== -->
+  <section class="shell band" data-reveal>
+    <h2 class="eyebrow">Selected case studies</h2>
+    <p class="lead measure lead--gap">
+      Three pieces of work, written up properly: what the problem was, what I
+      tried, what shipped, and what it moved. All three are client work under
+      NDA, so the write-ups are encrypted &mdash; the password unlocks all of them
+      at once.
+    </p>
+
+    <div class="cases">
+
+      <article class="case" data-locked="true">
+        <figure class="case__figure">
+          <img src="assets/thumb-orbital.jpg" alt="Orbital design system" width="740" height="876" loading="lazy">        </figure>
+        <div class="case__body">
+          <div class="case__meta">
+            <p class="case__no">Case study 01</p>
+            <span class="case__lock"><svg class="case__lockicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Password required</span>
+          </div>
+          <h3 class="case__title">
+            <a class="case__link" href="case-orbital.html" data-lock-link data-lock-title="Orbital — TSB's design system">Orbital &mdash; building TSB&rsquo;s design system</a>
+          </h3>
+          <p class="case__client">TSB Bank &middot; Design system manager</p>
+          <p class="case__blurb">
+            Sketch files, no source of truth, four squads drifting apart. I took
+            Orbital from a component audit to full adoption across the bank.
+          </p>
+          <p class="case__foot"><span>2021&ndash;2024</span><span>7 min read</span></p>
+        </div>
+      </article>
+
+      <article class="case" data-locked="true">
+        <figure class="case__figure">
+          <img src="assets/thumb-mcd.jpg" alt="Mobile cheque deposit" width="740" height="876" loading="lazy">        </figure>
+        <div class="case__body">
+          <div class="case__meta">
+            <p class="case__no">Case study 02</p>
+            <span class="case__lock"><svg class="case__lockicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Password required</span>
+          </div>
+          <h3 class="case__title">
+            <a class="case__link" href="case-mcd.html" data-lock-link data-lock-title="Mobile cheque deposit">Depositing a cheque with a phone camera</a>
+          </h3>
+          <p class="case__client">TSB Bank &middot; Product designer</p>
+          <p class="case__blurb">
+            Branch queues for a piece of paper. We shipped camera capture that
+            has taken 100,000 cheques since launch and moved NPS 4.4 points.
+          </p>
+          <p class="case__foot"><span>2021&ndash;2024</span><span>6 min read</span></p>
+        </div>
+      </article>
+
+      <article class="case" data-locked="true">
+        <figure class="case__figure">
+          <img src="assets/thumb-nbs.jpg" alt="Nationwide internet banking" width="740" height="876" loading="lazy">        </figure>
+        <div class="case__body">
+          <div class="case__meta">
+            <p class="case__no">Case study 03</p>
+            <span class="case__lock"><svg class="case__lockicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Password required</span>
+          </div>
+          <h3 class="case__title">
+            <a class="case__link" href="case-nbs.html" data-lock-link data-lock-title="Nationwide internet banking redesign">Redesigning internet banking for Nationwide</a>
+          </h3>
+          <p class="case__client">Nationwide &middot; Product designer &amp; DSM</p>
+          <p class="case__blurb">
+            A desktop estate at end of service life, drifting from the mobile
+            app. Rebuilding it on the NEL design system, component by component.
+          </p>
+          <p class="case__foot"><span>2024&ndash;ongoing</span><span>6 min read</span></p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="shell contact">
+    <div class="contact__say">
+      <h2 class="contact__head">Got something that needs designing properly?</h2>
+      <p class="dim spaced">
+        I&rsquo;m always up for talking about design systems, banking products, or
+        why your component library keeps getting forked. Email is the surest
+        way to reach me.
+      </p>
+    </div>
+    <div class="contact__do">
+      <a class="btn btn--primary btn--mail" href="mailto:jamu.kurian@gmail.com">
+        <svg class="btn__mail" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>jamu.kurian@gmail.com
+      </a>
+      <button class="copy" type="button" data-copy="jamu.kurian@gmail.com" hidden>
+        <svg class="copy__icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11.5" height="11.5" rx="2.5"/><path d="M15 5.5a2.5 2.5 0 0 0-2.5-2.5h-7A2.5 2.5 0 0 0 3 5.5v7A2.5 2.5 0 0 0 5.5 15"/></svg><span class="copy__label" data-copy-label aria-live="polite">Copy address</span>
+      </button>
+      <p class="contact__also">
+        Or reach me on <a href="https://www.linkedin.com/in/james-kurian">LinkedIn</a> &mdash; or call
+        <a class="contact__tel" href="tel:+919594486558">+91-9594486558</a>.
+      </p>
+    </div>
+  </div>
+  <div class="shell footer__base">
+    <span>&copy; <span data-year>2026</span> James Kurian</span>
+  </div>
+</footer>
+
+<!-- == Password gate ======================================== -->
+<div class="gate" data-gate-modal hidden role="dialog" aria-modal="true" aria-labelledby="gate-title">
+  <div class="gate__card">
+    <span class="gate__icon" aria-hidden="true">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+    </span>
+    <h2 class="gate__title" id="gate-title">This case study is protected</h2>
+    <p class="gate__note">
+      You&rsquo;re opening <strong data-gate-target>this case study</strong>. It&rsquo;s
+      client work under NDA, so the write-up is encrypted rather than merely
+      hidden &mdash; it decrypts in your browser once the password is right. One
+      unlock covers all three.
+    </p>
+    <form data-gate-form novalidate>
+      <label class="field">
+        <span class="field__label">Password</span>
+        <input class="field__input" id="gate-pw" type="password" data-gate-input autocomplete="current-password" placeholder="Enter the password" aria-describedby="gate-err">
+      </label>
+      <p class="gate__error" id="gate-err" data-gate-error role="alert" hidden></p>
+      <button class="btn btn--primary btn--block" type="submit" data-gate-submit>Unlock case studies</button>
+    </form>
+    <p class="gate__foot" data-gate-insecure hidden>
+      Heads up: this page is open from a file rather than a web address, and
+      browsers won&rsquo;t hand out their decryption API in that situation. Serve
+      the folder over http and it&rsquo;ll work.
+    </p>
+    <button class="gate__dismiss" type="button" data-gate-dismiss>Not now &mdash; take me back</button>
+  </div>
+</div>
+
+<script src="locked/payload.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

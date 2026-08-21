@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redesigning internet banking for Nationwide — James Kurian</title>
+<meta name="description" content="Nationwide’s internet banking is reaching end of service life, drifting away from the mobile app it is meant to match, with a quarter of its logins arriving from phones. I am rebui">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#181818">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23181818'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23cf44ff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400..800&amp;display=swap">
+<script>
+  /* Theme, chosen before first paint.
+
+     Inline and blocking on purpose. Deferring this to script.js means
+     the browser paints the default theme, then repaints — a white flash
+     on every navigation for someone who picked dark. Six pages of static
+     HTML share no shell to hoist it into, so it is duplicated knowingly.
+
+     try/catch because localStorage *throws* rather than returning null
+     when a browser is set to block storage; an exception here would
+     leave the page unstyled-looking and stop the rest of <head>. */
+  (function () {
+    var pick = 'dark';
+    try {
+      var saved = localStorage.getItem('jk.theme');
+      pick = (saved === 'light' || saved === 'dark') ? saved
+        : window.matchMedia('(prefers-color-scheme: light)').matches
+          ? 'light' : 'dark';
+    } catch (e) {}
+    document.documentElement.setAttribute('data-theme', pick);
+  })();
+</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead" data-masthead>
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="index.html">
+      <span class="wordmark__dot" aria-hidden="true"></span>
+      James Kurian
+    </a>
+    <div class="masthead__end">
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="work.html" aria-current="true">Case studies</a>
+        <a href="about.html">About</a>
+        <a href="mailto:jamu.kurian@gmail.com">Email</a>
+      </nav>
+      <button class="themer" type="button" role="switch" aria-checked="false"
+              aria-label="Light mode" data-themer>
+        <span class="themer__knob" aria-hidden="true"></span>
+        <svg class="themer__icon themer__icon--moon" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+             stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M20.2 14.6A8.6 8.6 0 0 1 9.4 3.8a8.6 8.6 0 1 0 10.8 10.8Z"/>
+        </svg>
+        <svg class="themer__icon themer__icon--sun" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+             stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="4.1"/>
+          <path d="M12 2.7v2.1M12 19.2v2.1M2.7 12h2.1M19.2 12h2.1M5.4 5.4l1.5 1.5M17.1 17.1l1.5 1.5M18.6 5.4l-1.5 1.5M6.9 17.1l-1.5 1.5"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div class="readbar__track" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <span class="readbar" data-readbar></span>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="shell cover">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol class="crumbs__list"><li class="crumbs__item"><a href="index.html">Home</a></li><li class="crumbs__item"><span class="crumbs__sep" aria-hidden="true">/</span><a href="work.html">Case studies</a></li><li class="crumbs__item"><span class="crumbs__sep" aria-hidden="true">/</span><span aria-current="page">Internet banking</span></li></ol></nav>
+    <h1 class="cover__title">Redesigning internet banking for Nationwide</h1>
+    <p class="lead cover__lead">Nationwide’s internet banking is reaching end of service life, drifting away from the mobile app it is meant to match, with a quarter of its logins arriving from phones. I am rebuilding it on the NEL design system, and closing NEL’s gaps as I go.</p>
+    <div class="facts"><div class="facts__cell"><span class="facts__key">Client</span><span class="facts__val">Nationwide Building Society</span></div><div class="facts__cell"><span class="facts__key">Role</span><span class="facts__val">Product designer & DSM</span></div><div class="facts__cell"><span class="facts__key">Team</span><span class="facts__val">6</span></div><div class="facts__cell"><span class="facts__key">Duration</span><span class="facts__val">2024 – ongoing</span></div><div class="facts__cell"><span class="facts__key">Read</span><span class="facts__val">6 minutes</span></div></div>
+  </section>
+
+<section class="shell outcome" aria-labelledby="outcome-nbs"><h2 class="outcome__head" id="outcome-nbs">Where it stands</h2><div class="metrics metrics--public"><div class="metric"><span class="metric__val">A quarter</span><span class="metric__key">of internet banking logins arrive on a phone, on a layout designed for a desktop</span></div><div class="metric"><span class="metric__val">In build</span><span class="metric__key">journeys rebuilt on NEL and moving into engineering</span></div></div><aside class="note note--defend"><span class="note__key">Why this number did the heavy lifting</span><p>“Make it responsive” is a preference, and preferences get deprioritised. “A quarter of your sessions are on a layout built for a different device” is a finding, and a finding is very hard to schedule around.</p></aside></section>
+
+  <section class="shell shell--narrow gatepage" data-gate-page hidden>
+    <div class="gate__card">
+      <span class="gate__icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+      </span>
+      <h2 class="gate__title">Enter the password to read this</h2>
+      <p class="gate__note">
+        This write-up is client work under NDA. It isn&rsquo;t hidden on the page &mdash;
+        it&rsquo;s encrypted, and decrypts here in your browser once the password is
+        right. One unlock covers all three case studies.
+      </p>
+      <form data-gate-form novalidate>
+        <label class="field">
+          <span class="field__label">Password</span>
+          <input class="field__input" type="password" data-gate-input autocomplete="current-password" placeholder="Enter the password" aria-describedby="gate-err-nbs">
+        </label>
+        <p class="gate__error" id="gate-err-nbs" data-gate-error role="alert" hidden></p>
+        <button class="btn btn--primary btn--block" type="submit" data-gate-submit>Unlock &amp; read</button>
+      </form>
+      <p class="gate__foot" data-gate-insecure hidden>
+        Heads up: this page is open from a file rather than a web address, and
+        browsers won&rsquo;t hand out their decryption API in that situation. Serve
+        the folder over http &mdash; <code>python3 -m http.server</code> inside it &mdash;
+        and this will work.
+      </p>
+      <p class="gate__foot">
+        Don&rsquo;t have it? <a href="mailto:jamu.kurian@gmail.com">Ask me</a> and I&rsquo;ll send it over.
+      </p>
+    </div>
+  </section>
+
+  <div class="shell reading" data-locked-page="nbs" hidden>
+    <div class="railhold">
+      <aside class="rail" data-rail aria-label="On this page"></aside>
+    </div>
+    <article class="article" data-article></article>
+    <nav class="pager" aria-label="Other case studies"><a class="pager__item pager__item--prev" href="case-mcd.html" rel="prev"><span class="pager__dir"><svg class="pager__arrow" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>Previous</span><span class="pager__title">Depositing a cheque with a phone camera</span><span class="pager__no">Case study 02</span></a><a class="pager__item pager__item--next" href="case-orbital.html" rel="next"><span class="pager__dir">Next<svg class="pager__arrow" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span><span class="pager__title">Orbital — building TSB’s design system</span><span class="pager__no">Case study 01</span></a></nav>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="shell contact">
+    <div class="contact__say">
+      <h2 class="contact__head">Questions about this one?</h2>
+      <p class="dim spaced">
+        Happy to talk through any of it in more detail than a web page allows
+        &mdash; including the parts that are still open.
+      </p>
+    </div>
+    <div class="contact__do">
+      <a class="btn btn--primary btn--mail" href="mailto:jamu.kurian@gmail.com">
+        <svg class="btn__mail" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>jamu.kurian@gmail.com
+      </a>
+      <button class="copy" type="button" data-copy="jamu.kurian@gmail.com" hidden>
+        <svg class="copy__icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11.5" height="11.5" rx="2.5"/><path d="M15 5.5a2.5 2.5 0 0 0-2.5-2.5h-7A2.5 2.5 0 0 0 3 5.5v7A2.5 2.5 0 0 0 5.5 15"/></svg><span class="copy__label" data-copy-label aria-live="polite">Copy address</span>
+      </button>
+      <p class="contact__also">
+        Or reach me on <a href="https://www.linkedin.com/in/james-kurian">LinkedIn</a> &mdash; or call
+        <a class="contact__tel" href="tel:+919594486558">+91-9594486558</a>.
+      </p>
+    </div>
+  </div>
+  <div class="shell footer__base">
+    <span>&copy; <span data-year>2026</span> James Kurian</span>
+  </div>
+</footer>
+
+<script src="locked/payload.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

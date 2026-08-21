@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — James Kurian</title>
+<meta name="description" content="James Kurian, product designer and design system manager at IBM. Nine years designing digital products, mostly in banking, for TSB, Nationwide, BP, Safeway and others.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#181818">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23181818'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23cf44ff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400..800&amp;display=swap">
+<script>
+  /* Theme, chosen before first paint.
+
+     Inline and blocking on purpose. Deferring this to script.js means
+     the browser paints the default theme, then repaints — a white flash
+     on every navigation for someone who picked dark. Six pages of static
+     HTML share no shell to hoist it into, so it is duplicated knowingly.
+
+     try/catch because localStorage *throws* rather than returning null
+     when a browser is set to block storage; an exception here would
+     leave the page unstyled-looking and stop the rest of <head>. */
+  (function () {
+    var pick = 'dark';
+    try {
+      var saved = localStorage.getItem('jk.theme');
+      pick = (saved === 'light' || saved === 'dark') ? saved
+        : window.matchMedia('(prefers-color-scheme: light)').matches
+          ? 'light' : 'dark';
+    } catch (e) {}
+    document.documentElement.setAttribute('data-theme', pick);
+  })();
+</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead" data-masthead>
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="index.html">
+      <span class="wordmark__dot" aria-hidden="true"></span>
+      James Kurian
+    </a>
+    <div class="masthead__end">
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="work.html">Case studies</a>
+        <a href="about.html" aria-current="page">About</a>
+        <a href="mailto:jamu.kurian@gmail.com">Email</a>
+      </nav>
+      <button class="themer" type="button" role="switch" aria-checked="false"
+              aria-label="Light mode" data-themer>
+        <span class="themer__knob" aria-hidden="true"></span>
+        <svg class="themer__icon themer__icon--moon" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+             stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M20.2 14.6A8.6 8.6 0 0 1 9.4 3.8a8.6 8.6 0 1 0 10.8 10.8Z"/>
+        </svg>
+        <svg class="themer__icon themer__icon--sun" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+             stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="4.1"/>
+          <path d="M12 2.7v2.1M12 19.2v2.1M2.7 12h2.1M19.2 12h2.1M5.4 5.4l1.5 1.5M17.1 17.1l1.5 1.5M18.6 5.4l-1.5 1.5M6.9 17.1l-1.5 1.5"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- Eyebrow and sub-title removed at James's request. What is left is the
+       statement on its own, which is the strongest thing on the page
+       anyway; the paragraph that used to follow it repeated most of "How I
+       got here" two sections down. -->
+  <section class="shell hero">
+    <h1 class="hero__line hero__line--wide">Systems thinker. Problem solver. Designer.</h1>
+  </section>
+
+  <section class="shell band split" data-reveal>
+    <div class="portrait">
+      <img src="assets/photo-portrait.jpg" alt="James Kurian" width="880" height="880">
+    </div>
+    <div class="prose stack--loose">
+      <h2>How I got here</h2>
+      <p>
+        I started out doing broad digital product work &mdash; retail, energy,
+        consumer apps &mdash; for brands including Safeway, Majid Al Futtaim,
+        Crompton, Fluvius and BP. That range taught me something specific: the
+        interface problems change completely between industries, but the
+        <strong>structural</strong> problems almost never do. Every one of those
+        teams was rebuilding the same components and disagreeing about the same
+        edge cases.
+      </p>
+      <p>
+        Banking is where that lesson became my job. At <strong>TSB</strong> I
+        moved from designing features to owning the system underneath them,
+        running Orbital as design system manager across four squads and 350-odd
+        people. In parallel I designed mobile cheque deposit end to end, which
+        was a useful corrective &mdash; systems work can drift into abstraction, and
+        nothing grounds you faster than watching someone fail to photograph a
+        cheque in bad lighting.
+      </p>
+      <p>
+        Now I&rsquo;m at <strong>Nationwide</strong>, redesigning internet banking:
+        a large desktop estate reaching end of service life, drifting away from
+        the mobile app, and being asked to become properly responsive. I&rsquo;m
+        doing it as both product designer and design system manager, which means
+        every gap I hit in the NEL design system is also mine to close.
+      </p>
+
+      <h2>What I believe about this work</h2>
+      <p>
+        A design system is not a component library. The library is the artefact;
+        the system is the agreement about who decides what, and how a change
+        travels. Get the agreement wrong and you will ship a beautiful library
+        that four teams quietly fork within a quarter.
+      </p>
+      <p>
+        Accessibility belongs in the primitives. If your focus state, contrast
+        and hit areas are correct in the component, nobody downstream has to
+        remember &mdash; and nobody downstream reliably remembers. This site is built
+        the same way: one two-stroke focus ring, contrast checked by script
+        rather than by eye.
+      </p>
+      <p>
+        Numbers matter, but so does saying which ones are still open. Two of the
+        three case studies here have results I can stand behind. The third is
+        mid-flight, and I&rsquo;ve written it that way.
+      </p>
+    </div>
+  </section>
+
+  <section class="shell band" data-reveal>
+    <h2 class="eyebrow">The route</h2>
+    <div class="timeline">
+      <div class="timeline__row">
+        <p class="timeline__when">2024 &ndash; now</p>
+        <div class="timeline__what">
+          <h3>Product designer &amp; design system manager &middot; Nationwide, via IBM</h3>
+          <p>
+            Redesigning the internet banking estate on the NEL design system.
+            Component gap analysis, a new-components backlog, responsive and
+            accessibility work, and closing NEL&rsquo;s gaps as the build reaches them.
+          </p>
+        </div>
+      </div>
+      <div class="timeline__row">
+        <p class="timeline__when">2021 &ndash; 2024</p>
+        <div class="timeline__what">
+          <h3>Design system manager &amp; product designer &middot; TSB, via IBM</h3>
+          <p>
+            Built and ran Orbital, TSB&rsquo;s design system: audit, architecture,
+            documentation, governance and the Sketch-to-Figma migration. Reached
+            100% adoption and roughly 95% component utilisation. Alongside it,
+            designed mobile cheque deposit from discovery to launch.
+          </p>
+        </div>
+      </div>
+      <div class="timeline__row">
+        <p class="timeline__when">Earlier</p>
+        <div class="timeline__what">
+          <h3>Digital product designer</h3>
+          <p>
+            Product and brand-adjacent digital work across retail, energy and
+            consumer sectors &mdash; Safeway, Majid Al Futtaim, Crompton, Fluvius and
+            BP. Where I learned to work fast inside somebody else&rsquo;s brand.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="shell band" data-reveal>
+    <h2 class="eyebrow">Tools &amp; practices</h2>
+    <div class="skills">
+      <div class="skills__group">
+        <h3>Design</h3>
+        <ul>
+          <li>Figma (variables, variants, libraries)</li>
+          <li>Sketch, and migrating off it</li>
+          <li>Prototyping for real testing</li>
+          <li>Design tokens end to end</li>
+        </ul>
+      </div>
+      <div class="skills__group">
+        <h3>Research</h3>
+        <ul>
+          <li>Moderated usability testing</li>
+          <li>Competitor &amp; heuristic analysis</li>
+          <li>Journey and service mapping</li>
+          <li>Analytics-led prioritisation</li>
+        </ul>
+      </div>
+      <div class="skills__group">
+        <h3>Delivery</h3>
+        <ul>
+          <li>Pairing with engineering</li>
+          <li>HTML &amp; CSS to spec accurately</li>
+          <li>WCAG 2.2 AA in the primitives</li>
+          <li>Design QA against the build</li>
+        </ul>
+      </div>
+      <div class="skills__group">
+        <h3>Away from the screen</h3>
+        <ul>
+          <li>Photographing the team badly</li>
+          <li>Being managed by one cat</li>
+          <li>Collecting interface references</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="shell contact">
+    <div class="contact__say">
+      <h2 class="contact__head">Let&rsquo;s talk.</h2>
+      <p class="dim spaced">
+        Design systems, banking products, or an interface that has quietly got
+        away from you &mdash; all welcome.
+      </p>
+    </div>
+    <div class="contact__do">
+      <a class="btn btn--primary btn--mail" href="mailto:jamu.kurian@gmail.com">
+        <svg class="btn__mail" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>jamu.kurian@gmail.com
+      </a>
+      <button class="copy" type="button" data-copy="jamu.kurian@gmail.com" hidden>
+        <svg class="copy__icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11.5" height="11.5" rx="2.5"/><path d="M15 5.5a2.5 2.5 0 0 0-2.5-2.5h-7A2.5 2.5 0 0 0 3 5.5v7A2.5 2.5 0 0 0 5.5 15"/></svg><span class="copy__label" data-copy-label aria-live="polite">Copy address</span>
+      </button>
+      <p class="contact__also">
+        Or reach me on <a href="https://www.linkedin.com/in/james-kurian">LinkedIn</a> &mdash; or call
+        <a class="contact__tel" href="tel:+919594486558">+91-9594486558</a>.
+      </p>
+    </div>
+  </div>
+  <div class="shell footer__base">
+    <span>&copy; <span data-year>2026</span> James Kurian</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
